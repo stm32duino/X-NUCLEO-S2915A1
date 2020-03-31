@@ -43,6 +43,9 @@
 #include "S2LP.h"
 
 #define SerialPort Serial
+#define PA_CSD_PIN A0
+#define PA_CPS_PIN A2
+#define PA_CTX_PIN A3
 
 SPIClass *devSPI;
 M95640R *myM95640R;
@@ -71,9 +74,10 @@ void setup() {
 
   memset(&paInfo, 0, sizeof(PAInfo_t));
 
-  paInfo.paSignalCSD_MCU = A0;
-  paInfo.paSignalCPS_MCU = A2;
-  paInfo.paSignalCTX_MCU = A3;
+  // Setup CSD, CPS and CTX pins
+  paInfo.paSignalCSD_MCU = PA_CSD_PIN;
+  paInfo.paSignalCPS_MCU = PA_CPS_PIN;
+  paInfo.paSignalCTX_MCU = PA_CTX_PIN;
 
   // Initialize serial for output.
   SerialPort.begin(115200);
