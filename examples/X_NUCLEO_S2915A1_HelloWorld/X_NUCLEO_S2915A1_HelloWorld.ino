@@ -123,13 +123,13 @@ void loop() {
   if(digitalRead(buttonPin) == pushButtonState)
   {
     /* Debouncing */
-    HAL_Delay(50);
+    delay(50);
 
     /* Wait until the button is released */
     while (digitalRead(buttonPin) == pushButtonState);
 
     /* Debouncing */
-    HAL_Delay(50);
+    delay(50);
 
     if(!myS2LP->send(send_buf, (strlen((char *)send_buf) + 1), 0x44, true))
     {
